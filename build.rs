@@ -27,7 +27,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "thumbv6m-none-eabi"
         | "msp430-none-elf"
         | "riscv32i-unknown-none-elf"
-        | "riscv32imc-unknown-none-elf" => {}
+        | "riscv32imc-unknown-none-elf" | "atmega32u4" => {}
 
         _ => {
             println!("cargo:rustc-cfg=has_cas");
@@ -35,7 +35,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     };
 
     match &target[..] {
-        "msp430-none-elf" | "riscv32i-unknown-none-elf" | "riscv32imc-unknown-none-elf" => {}
+        "msp430-none-elf" | "riscv32i-unknown-none-elf" | "riscv32imc-unknown-none-elf" | "atmega32u4" => {}
 
         _ => {
             println!("cargo:rustc-cfg=has_atomics");
